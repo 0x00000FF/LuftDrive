@@ -1,6 +1,6 @@
 ﻿/// <binding BeforeBuild='complile:less, bundle:css, minify:css' />
 const gulp = require("gulp")
-    , sass = require("gulp-sass")
+    , sass = require("gulp-sass")(require("sass"))
     , concat = require("gulp-concat")
     , clean = require("gulp-clean")
     , cssmin = require("gulp-cssmin")
