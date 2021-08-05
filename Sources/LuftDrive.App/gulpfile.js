@@ -10,7 +10,7 @@ const gulp = require("gulp")
     , cssTargetBundle = cssTarget + "LuftStyle.css";
 
 // compile LESS sheets into CSS
-gulp.task("complile:less",
+gulp.task("complile:scss",
     () => gulp.src("Styles/**/*.scss")
         .pipe(sass())
         .pipe(gulp.dest(cssTarget)));
@@ -28,6 +28,6 @@ gulp.task("minify:css",
         .pipe(gulp.dest(cssRoot)));
 
 // clear intermediate files
-gulp.task("clear"),
+gulp.task("clear",
     () => gulp.src(cssTarget, { read: false })
         .pipe(clean()));
