@@ -1,0 +1,16 @@
+﻿<div id="apps">
+
+</div>
+<div id="taskbar">
+    <button></button>
+    <ul class="taskbar-app-strip">
+        @foreach (TaskButton button in CurrentTasks)
+        {
+            @button
+        }
+    </ul>
+</div>
+
+@code {
+    List<TaskButton> CurrentTasks;
+}
