@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Static\Styles\**" />
+    <Content Remove="Static\Styles\**" />
+    <EmbeddedResource Remove="Static\Styles\**" />
+    <None Remove="Static\Styles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Static\favicon.ico" />
   </ItemGroup>
 
