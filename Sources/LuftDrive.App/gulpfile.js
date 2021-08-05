@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='complile:less, bundle:css, minify:css' />
+﻿/// <binding BeforeBuild='complile:scss, bundle:css, minify:css, clear' />
 const gulp = require("gulp")
     , sass = require("gulp-sass")(require("sass"))
     , concat = require("gulp-concat")
@@ -9,7 +9,14 @@ const gulp = require("gulp")
     , cssTargetFiles = cssTarget + "*.css"
     , cssTargetBundle = cssTarget + "LuftStyle.css";
 
-// compile LESS sheets into CSS
+
+//
+//
+//   SASS TO CSS STAGE
+//
+//
+
+// compile SASS sheets into CSS
 gulp.task("complile:scss",
     () => gulp.src("Styles/**/*.scss")
         .pipe(sass())
@@ -31,3 +38,10 @@ gulp.task("minify:css",
 gulp.task("clear",
     () => gulp.src(cssTarget, { read: false })
         .pipe(clean()));
+
+
+//
+//
+//    TS TO JS STAGE
+//
+//
