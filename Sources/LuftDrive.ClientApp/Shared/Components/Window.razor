@@ -1,0 +1,89 @@
+﻿<div class="window" style="@WindowStyle">
+    <div class="window-header"
+         draggable="true"
+         @ondragstart="Window_OnDragStart"
+         @ondrag="Window_OnDrag"
+         @ondragend="Window_OnDragEnd">
+        <p class="window-header-text">@Title</p>
+        <div class="window-header-buttons">
+            <button @onclick="Window_Minimize">
+            </button>
+            <button @onclick="Window_ToggleFullscreen">
+            </button>
+            <button @onclick="Window_Close">
+            </button>
+        </div>
+    </div>
+    <div class="window-body">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public bool IsFullscreen { get; set; }
+
+    [Parameter]
+    public bool IsMinimized { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public bool IsMoving { get; set; }
+    public double MoveOffsetX { get; set; }
+    public double MoveOffsetY { get; set; }
+
+    [Parameter]
+    public double X { get; set; }
+
+    [Parameter]
+    public double Y { get; set; }
+
+    public double Height { get; set; } = 100;
+    public double Width { get; set; } = 200;
+
+    private string WindowStyle =>
+        $"left:{X}px;top:{Y}px;width:{Width}px;height:{Height}px";
+
+
+    public void Window_OnTitlebarClicked(EventArgs e)
+    {
+
+    }
+
+    public void Window_OnDragStart(MouseEventArgs e)
+    {
+        MoveOffsetX = e.OffsetX;
+        MoveOffsetY = e.OffsetY;
+    }
+
+    public void Window_OnDrag(MouseEventArgs e)
+    {
+        X = e.ClientX - MoveOffsetX;
+        Y = e.ClientY - MoveOffsetY;
+    }
+
+    public void Window_OnDragEnd(MouseEventArgs e)
+    {
+        X = e.ClientX - MoveOffsetX;
+        Y = e.ClientY - MoveOffsetY;
+    }
+
+    public void Window_Minimize(EventArgs e)
+    {
+
+    }
+
+    public void Window_ToggleFullscreen(EventArgs e)
+    {
+
+    }
+
+    public void Window_Close(EventArgs e)
+    {
+
+    }
+}
