@@ -28,7 +28,7 @@ namespace LuftDrive.App
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<Session>();
+            services.AddScoped<ServiceSession>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
