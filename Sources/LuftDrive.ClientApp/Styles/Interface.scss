@@ -1,0 +1,83 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body { min-height: 100%; height: 100%; width: 100% }
+
+#app {
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    /* sample wallper for testing purpose. 
+       must be removed after flexible wallpaper feature is completed*/
+    background: url('sample_wallpaper.jpg') center no-repeat;
+    background-size: cover;
+
+    .window {
+        position: absolute;
+        border: 1px solid #000;
+        border-radius: 3px;
+        box-shadow: rgba(0,0,0,0.6) 0px 4px 4px;
+        min-width: 50px;
+        min-height: 50px;
+
+        .window-header {
+            display: flex;
+            background-color: #000;
+            color: #fff;
+
+            .window-header-text {
+                padding: 0 10px;
+                font-size: 16px;
+                line-height: 30px;
+                margin-right: auto;
+                pointer-events: none;
+            }
+
+            .window-header-buttons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+        }
+
+        .window-body {
+            background: #fff;
+            /* I have no idea why it has error for 28pixels
+               need to figure out */
+            height: calc(100% - 28px);
+            width: 100%;
+        }
+    }
+
+    #taskbar {
+        position: absolute;
+        display: flex;
+        left: 0;
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+        background-color: #ccc;
+
+        .taskbar-app-strip {
+            margin-right: auto;
+        }
+
+        .taskbar-clock {
+            background: #fff;
+            height: 40px;
+            padding: 0 15px;
+            line-height: 40px;
+        }
+    }
+}
