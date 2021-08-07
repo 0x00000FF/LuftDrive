@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuftDrive.WebTest", "LuftDr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuftDrive.ClientApp", "LuftDrive.ClientApp\LuftDrive.ClientApp.csproj", "{30AF3EBF-C849-4576-A79F-8FC8B6B08620}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuftDrive.Server", "LuftDrive.Server\LuftDrive.Server.csproj", "{4B7E12D5-E9CC-4B9A-963B-16093E2677B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuftDrive.Common", "LuftDrive.Common\LuftDrive.Common.csproj", "{10FD1DB4-71C8-4CAC-8238-5AFC96654A17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{30AF3EBF-C849-4576-A79F-8FC8B6B08620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30AF3EBF-C849-4576-A79F-8FC8B6B08620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30AF3EBF-C849-4576-A79F-8FC8B6B08620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7E12D5-E9CC-4B9A-963B-16093E2677B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7E12D5-E9CC-4B9A-963B-16093E2677B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7E12D5-E9CC-4B9A-963B-16093E2677B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7E12D5-E9CC-4B9A-963B-16093E2677B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10FD1DB4-71C8-4CAC-8238-5AFC96654A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10FD1DB4-71C8-4CAC-8238-5AFC96654A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10FD1DB4-71C8-4CAC-8238-5AFC96654A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10FD1DB4-71C8-4CAC-8238-5AFC96654A17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
