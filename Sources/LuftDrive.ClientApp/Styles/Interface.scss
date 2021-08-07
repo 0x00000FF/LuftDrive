@@ -12,7 +12,6 @@ html, body { min-height: 100%; height: 100%; width: 100% }
     height: 100%;
     width: 100%;
     overflow: hidden;
-
     /* sample wallper for testing purpose. 
        must be removed after flexible wallpaper feature is completed*/
     background: url('sample_wallpaper.jpg') center no-repeat;
@@ -28,7 +27,7 @@ html, body { min-height: 100%; height: 100%; width: 100% }
 
         .window-header {
             display: flex;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
 
             .window-header-text {
@@ -42,21 +41,34 @@ html, body { min-height: 100%; height: 100%; width: 100% }
             .window-header-buttons {
                 display: flex;
                 justify-content: center;
-                align-items: center;
 
                 button {
-                    height: 30px;
-                    width: 30px;
+                    height: 20px;
+                    width: 35px;
+                    border: 0;
+                    border-radius: 0;
+                    background: transparent;
+                    color: #aaa;
+                }
+
+                button:hover {
+                    background: rgba(100, 100, 100, 0.8);
+
+                }
+
+                button:active {
                 }
             }
         }
 
         .window-body {
             background: #fff;
-            /* I have no idea why it has error for 28pixels
-               need to figure out */
-            height: calc(100% - 28px);
+            /* titlebar = 30px */
+            height: calc(100% - 30px);
             width: 100%;
+            overflow: auto;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
         }
     }
 
@@ -67,14 +79,58 @@ html, body { min-height: 100%; height: 100%; width: 100% }
         bottom: 0;
         height: 40px;
         width: 100%;
-        background-color: #ccc;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        button {
+            display: flex;
+            color: #fff;
+            background: transparent;
+            border: 0;
+            align-items: center;
+            padding: 0 10px;
+            transition: 0.1s;
+        }
+
+        #apps {
+            height: 100%;
+            width: 40px;
+            padding: 0;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bolder;
+
+            .logo {
+                transform: rotate(-45deg);
+            }
+        }
+
+        button:hover {
+            background: rgba(100, 100, 100, 0.8);
+            color: #fff;
+
+            transition: 0.1s;
+            cursor: pointer;
+        }
+
+        button:active {
+            background: rgba(40, 40, 40);
+        }
 
         .taskbar-app-strip {
+            display: flex;
+            align-items: center;
             margin-right: auto;
+
+            button {
+                display: flex;
+                margin: 3px 2px;
+                height: calc(100% - 6px);
+            }
         }
 
         .taskbar-clock {
-            background: #fff;
+            background: transparent;
+            color: #fff;
             height: 40px;
             padding: 0 15px;
             line-height: 40px;
