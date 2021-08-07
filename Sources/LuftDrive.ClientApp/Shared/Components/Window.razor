@@ -1,21 +1,30 @@
 ﻿<div class="window" style="@WindowStyle">
     <div class="window-header"
-         draggable="true"
+         draggable="@(!IsFullscreen)"
+
          @ondragstart="Window_OnDragStart"
+         
          @ondrag="Window_OnDrag"
-         @ondragend="Window_OnDragEnd">
+         @ondrag:preventDefault="!IsFullscreen"
+
+         @ondragend="Window_OnDragEnd"
+
+         @ondblclick="Window_ToggleFullscreen">
         <p class="window-header-text">@Title</p>
         <div class="window-header-buttons">
             <button @onclick="Window_Minimize">
+                
             </button>
             <button @onclick="Window_ToggleFullscreen">
+
             </button>
             <button @onclick="Window_Close">
+
             </button>
         </div>
     </div>
     <div class="window-body">
-        @ChildContent
+        @AppFragment()
     </div>
 </div>
 
@@ -30,11 +39,17 @@
     public bool IsMinimized { get; set; }
 
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
+    public Type App { get; set; }
 
     public bool IsMoving { get; set; }
     public double MoveOffsetX { get; set; }
     public double MoveOffsetY { get; set; }
+
+    private RenderFragment AppFragment() => builder =>
+    {
+        builder.OpenComponent(0, App);
+        builder.CloseComponent();
+    };
 
     [Parameter]
     public double X { get; set; }
@@ -42,12 +57,22 @@
     [Parameter]
     public double Y { get; set; }
 
+    [Parameter]
     public double Height { get; set; } = 100;
+
+    [Parameter]
     public double Width { get; set; } = 200;
 
-    private string WindowStyle =>
-        $"left:{X}px;top:{Y}px;width:{Width}px;height:{Height}px";
+    private string _X => IsFullscreen ? "0" : $"{X}px";
+    private string _Y => IsFullscreen ? "0" : $"{Y}px";
 
+    private string _Height => IsFullscreen ? "calc(100% - 40px)" : $"{Height}px";
+    private string _Width => IsFullscreen ? "100%" : $"{Width}px";
+
+    private string WindowStyle =>
+        $"left:{_X};top:{_Y};" +
+        $"width:{_Width};height:{_Height};" +
+        (IsFullscreen ? "box-shadow: 0" : "");
 
     public void Window_OnTitlebarClicked(EventArgs e)
     {
@@ -79,7 +104,7 @@
 
     public void Window_ToggleFullscreen(EventArgs e)
     {
-
+        IsFullscreen = !IsFullscreen;
     }
 
     public void Window_Close(EventArgs e)
