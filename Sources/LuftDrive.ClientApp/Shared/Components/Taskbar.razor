@@ -2,8 +2,13 @@
 
 </div>
 <div id="taskbar">
-    <button>Apps</button>
+    <button id="apps">
+        <span class="logo">L</span>
+    </button>
     <ul class="taskbar-app-strip">
+        <TaskButton AppTitle="Sample1" />
+        <TaskButton AppTitle="Sample2" />
+        <TaskButton AppTitle="Sample3" />
         @foreach (TaskButton button in CurrentTasks)
         {
             @button
