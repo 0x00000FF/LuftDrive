@@ -1,18 +1,76 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>5e6c2ce6-8c11-430d-afa8-e1c697fdd3aa</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Static\Styles\**" />
-    <Content Remove="Static\Styles\**" />
-    <EmbeddedResource Remove="Static\Styles\**" />
-    <None Remove="Static\Styles\**" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Static\favicon.ico" />
+    <Content Update="App.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\Index.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Shared\MainLayout.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="_Imports.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Apps\Cabinet\Cabinet.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Apps\Cabinet\Cabinet.razor" />
+    <_ContentIncludedByDefault Remove="Apps\Common\ListView.razor" />
+    <_ContentIncludedByDefault Remove="Apps\Common\MenuStrip.razor" />
+    <_ContentIncludedByDefault Remove="Apps\Common\ToolStrip.razor" />
+    <_ContentIncludedByDefault Remove="Shared\Components\Icon.razor" />
+    <_ContentIncludedByDefault Remove="Shared\Components\LuftApp.razor" />
+    <_ContentIncludedByDefault Remove="Shared\Components\Taskbar.razor" />
+    <_ContentIncludedByDefault Remove="Shared\Components\TaskButton.razor" />
+    <_ContentIncludedByDefault Remove="Shared\Components\Window.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Apps\Common\ListView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Apps\Common\MenuStrip.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Apps\Common\ToolStrip.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\Components\Icon.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\Components\LuftApp.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\Components\Taskbar.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\Components\TaskButton.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\Components\Window.razor" />
   </ItemGroup>
 
 </Project>

@@ -20,9 +20,7 @@ namespace LuftDrive.App
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-                        .UseWebRoot("Static")
-                        .UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
