@@ -1,20 +1,10 @@
 ﻿@inject IJSRuntime JSRuntime
 
-<div class="window" style="@WindowStyle">
-    <div class="window-header"
-         draggable="@(!IsFullscreen)"
-
-         @ondragstart="Window_OnDragStart"
-         
-         @ondrag="Window_OnDrag"
-         @ondrag:preventDefault="!IsFullscreen"
-
-         @ondragend="Window_OnDragEnd"
-
-         @ondblclick="Window_ToggleFullscreen">
+<div class="window" id="@Id">
+    <div class="window-header">
         <p class="window-header-text">@Title</p>
         <div class="window-header-buttons">
-            <button @onclick="Window_Minimize">
+            <button>
                 
             </button>
             <button @onclick="Window_ToggleFullscreen">
@@ -73,46 +63,28 @@
     private string _Height => IsFullscreen ? "calc(100% - 40px)" : $"{Height}px";
     private string _Width => IsFullscreen ? "100%" : $"{Width}px";
 
-    private string WindowStyle =>
-        $"left:{_X};top:{_Y};" +
-        $"width:{_Width};height:{_Height};" +
-        (IsFullscreen ? "box-shadow: 0" : "");
-
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         Id = "Window-x";
-        var result = JSRuntime.InvokeAsync<object>("Window", Id);
-
-        base.OnInitialized();
+        await base.OnInitializedAsync();
     }
 
-    public void Window_OnTitlebarClicked(EventArgs e)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (firstRender) {
+            var window = JSRuntime.InvokeAsync<object>("CreateWindow", 
+            new
+            {
+                id = Id,
+                width = _Width,
+                height = _Height
+            });
+        }
 
+        await base.OnAfterRenderAsync(firstRender);
     }
 
-    public void Window_OnDragStart(MouseEventArgs e)
-    {
-        MoveOffsetX = e.OffsetX;
-        MoveOffsetY = e.OffsetY;
-    }
 
-    public void Window_OnDrag(MouseEventArgs e)
-    {
-        X = e.ClientX - MoveOffsetX;
-        Y = e.ClientY - MoveOffsetY;
-    }
-
-    public void Window_OnDragEnd(MouseEventArgs e)
-    {
-        X = e.ClientX - MoveOffsetX;
-        Y = e.ClientY - MoveOffsetY;
-    }
-
-    public void Window_Minimize(EventArgs e)
-    {
-
-    }
 
     public void Window_ToggleFullscreen(EventArgs e)
     {
