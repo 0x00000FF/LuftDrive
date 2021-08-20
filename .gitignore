@@ -6,4 +6,5 @@ lib
 node_modules
 
 LuftStyle.css
+LuftScript.js
 Sources/LuftDrive.ClientApp/wwwroot/sample_wallpaper.jpg
